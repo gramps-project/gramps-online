@@ -85,10 +85,20 @@ WSGI_APPLICATION = 'gramps_online.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+POSTGIS_DEFAULT_DB_NAME = 'gramps_online'
+POSTGIS_DEFAULT_USER = 'postgis'
+POSTGIS_DEFAULT_PASSWORD = 'postgis123'
+POSTGIS_DEFAULT_HOST = 'localhost'
+POSTGIS_DEFAULT_PORT = '5432'
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': os.getenv('POSTGIS_DB_NAME', POSTGIS_DEFAULT_DB_NAME),
+        'USER': os.getenv('POSTGIS_USER', POSTGIS_DEFAULT_USER),
+        'PASSWORD': os.getenv('POSTGIS_PASSWORD', POSTGIS_DEFAULT_PASSWORD),
+        'HOST': os.getenv('POSTGIS_HOST', POSTGIS_DEFAULT_HOST),
+        'PORT': os.getenv('POSTGIS_PORT', POSTGIS_DEFAULT_PORT),
     }
 }
 
