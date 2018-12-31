@@ -2,7 +2,7 @@
 A simple, online version of [Gramps](https://gramps-project.org/).
 
 ## Development
-This section outlines how to set up a basic development environment. If you have any difficulties, feel free to open an issue. We will gladly help!
+This section outlines how to set up a basic development environment. If you have any difficulties, feel free to [open an issue](https://github.com/gramps-project/gramps-online/issues/new). We will gladly help!
 
 ### Prerequisites
 In order to set up a developer environment, you will need to have [Python 3](https://www.python.org/), [PostGIS](https://postgis.net/) (with Python 3 bindings), and [Git](https://git-scm.com/) installed on your computer.
