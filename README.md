@@ -1,5 +1,5 @@
 # gramps-online
-A simple, online version of Gramps.
+A simple, online version of [Gramps](https://gramps-project.org/).
 
 ## Development
 This section outlines how to set up a basic development environment. If you have any difficulties, feel free to open an issue. We will gladly help!
