@@ -1,3 +1,7 @@
+"""
+Django’s command-line utility for administrative tasks.
+"""
+
 #!/usr/bin/env python
 
 #  Gramps Online - an online version of the Gramps genealogy program
