@@ -5,7 +5,22 @@ A simple, online version of Gramps.
 This section outlines how to set up a basic development environment. If you have any difficulties, feel free to open an issue. We will gladly help!
 
 ### Prerequisites
-In order to set up a developer environment, you will need to have [Python 3](https://www.python.org/) and [Git](https://git-scm.com/) installed on your computer.
+In order to set up a developer environment, you will need to have [Python 3](https://www.python.org/), [PostGIS](https://postgis.net/) (with Python 3 bindings), and [Git](https://git-scm.com/) installed on your computer.
+
+#### Python 3
+[Download Python 3](https://www.python.org/downloads/) from the official website, or install it via the package manager for your operating system.
+
+#### PostGIS
+Refer to the official [PostGIS](https://postgis.net/install/) or [django](https://docs.djangoproject.com/en/2.1/ref/contrib/gis/install/postgis/) documentation for instructions on installing PostGIS.
+
+If you are comfortable with Docker, you can set up a PostGIS server, using the [kartoza/postgis image](https://github.com/kartoza/docker-postgis):
+
+```bash
+$ docker run --name=postgis -d -e POSTGRES_USER=postgis -e POSTGRES_PASS=postgis123 -e POSTGRES_DBNAME=gramps_online -p 5432:5432 kartoza/postgis:9.6-2.4
+```
+
+#### Git
+You can [download git from the official website](https://git-scm.com/downloads). Additionally, there are a number of [Graphical User Interfaces for Git](https://git-scm.com/downloads/guis), that make it a bit easier to learn and use.
 
 ### Project source code and dependencies
 With the basic software installed, you can set up a development environment with the following steps.
