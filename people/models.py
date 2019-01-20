@@ -17,4 +17,12 @@
 
 from django.db import models
 
-# Create your models here.
+class Person(models.Model):
+    """
+    A natural person,
+    modeled after GEDCOM X Person
+    http://www.gedcomx.org/v1/Person
+    """
+    private = models.BooleanField(
+        help_text="Whether this person has been designated for limited distribution or display."
+    )
