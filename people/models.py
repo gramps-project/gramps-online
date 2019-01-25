@@ -23,6 +23,29 @@ class Person(models.Model):
     modeled after GEDCOM X Person
     http://www.gedcomx.org/v1/Person
     """
+
+    # Choices for Person 'sex' field
+    # using 'sex' to conform to contemporary distinction of 'sex' and 'gender' while aligning with GEDCOM X 2.0 roadmap
+    # see: https://github.com/FamilySearch/gedcomx/issues/318
+    # https://github.com/FamilySearch/gedcomx/issues/319
+    SEX_FEMALE = "female"
+    SEX_INTERSEX = "intersex"
+    SEX_MALE = "male"
+    SEX_UNKNOWN = "unknown"
+
+    SEX_CHOICES = (
+        (SEX_FEMALE, "Female"),
+        (SEX_INTERSEX, "Intersex"),
+        (SEX_MALE, "Male"),
+        (SEX_UNKNOWN, "Unknown")
+    )
+
     private = models.BooleanField(
         help_text="Whether this person has been designated for limited distribution or display."
     )
+    sex = models.CharField(
+        max_length=8,
+        choices=SEX_CHOICES,
+        null=True,
+    )
+
