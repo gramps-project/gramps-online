@@ -49,3 +49,43 @@ class Person(models.Model):
         null=True,
     )
 
+
+class Name(models.Model):
+    """
+    Name of a natural person.
+    Modeled after GEDCOM X Name
+    https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#name-conclusion
+    """
+
+    # GEDCOM X known name types
+    # https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#known-name-types
+    TYPE_BIRTH_NAME = "birth_name"
+    TYPE_MARRIED_NAME = "married_name"
+    TYPE_ALSO_KNOWN_AS = "also_known_as"
+    TYPE_ADOPTIVE_NAME = "adoptive_name"
+    TYPE_FORMAL_NAME = "formal_name"
+    TYPE_RELIGIOUS_NAME = "religious_name"
+
+    NAME_TYPE_CHOICES = (
+        (TYPE_BIRTH_NAME, "Birth name"),
+        (TYPE_MARRIED_NAME, "Married name"),
+        (TYPE_ALSO_KNOWN_AS, "Also known as"),
+        (TYPE_ADOPTIVE_NAME, "Adoptive name"),
+        (TYPE_FORMAL_NAME, "Formal name"),
+        (TYPE_RELIGIOUS_NAME, "Religious name"),
+    )
+
+    person = models.ForeignKey(
+        Person,
+        null=False,
+        on_delete=models.CASCADE,
+    )
+    type = models.CharField(
+        max_length=255,
+        choices=NAME_TYPE_CHOICES,
+        null=True,
+    )
+    # TODO: determine how best to model the date field
+    # https://github.com/FamilySearch/gedcomx/blob/master/specifications/conceptual-model-specification.md#conclusion-date
+
+# TODO: add NameForms model
