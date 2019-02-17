@@ -15,7 +15,10 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+from enum import Enum
+
 from django.db import models
+
 
 class Person(models.Model):
     """
@@ -28,24 +31,24 @@ class Person(models.Model):
     # using 'sex' to conform to contemporary distinction of 'sex' and 'gender' while aligning with GEDCOM X 2.0 roadmap
     # see: https://github.com/FamilySearch/gedcomx/issues/318
     # https://github.com/FamilySearch/gedcomx/issues/319
-    SEX_FEMALE = "female"
-    SEX_INTERSEX = "intersex"
-    SEX_MALE = "male"
-    SEX_UNKNOWN = "unknown"
+    # using Enum data structure in accordance with Two Scoops of Django 1.11 (ch. 6.4.8) and the following article
+    # https://hackernoon.com/using-enum-as-model-field-choice-in-django-92d8b97aaa63
+    class SEX_CHOICES(Enum):
+        female = ("female", "Female")
+        intersex = ("interses", "Intersex")
+        male = ("male", "Male")
+        unknown = ("unknown", "Unknown")
 
-    SEX_CHOICES = (
-        (SEX_FEMALE, "Female"),
-        (SEX_INTERSEX, "Intersex"),
-        (SEX_MALE, "Male"),
-        (SEX_UNKNOWN, "Unknown")
-    )
+        @classmethod
+        def get_value(cls, member):
+            return cls[member].value[0]
 
     private = models.BooleanField(
         help_text="Whether this person has been designated for limited distribution or display."
     )
     sex = models.CharField(
         max_length=8,
-        choices=SEX_CHOICES,
+        choices=[choice.value for choice in SEX_CHOICES],
         null=True,
     )
 
