@@ -1,6 +1,11 @@
 # gramps-online
 A simple online version of Gramps
 
+## Project vision
+This project aims to produce a platform for collaborating on a shared genealogy tree. It should allow many people to edit the tree and keep track of changes.
+
+The data produced through this collaborative process should be publicly accessible, part of our commonwealth, while respecting privacy of living persons.
+
 ## Design principles
 The following principles guide decisions for design and development of this project.
 
