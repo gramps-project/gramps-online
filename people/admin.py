@@ -17,7 +17,15 @@
 
 from django.contrib import admin
 
-# Register your models here.
-from .models import Person
+from .models import Name, Person
 
-admin.site.register(Person)
+
+class NameInline(admin.TabularInline):
+    model = Name
+
+
+@admin.register(Person)
+class PersonAdmin(admin.ModelAdmin):
+    inlines = [
+        NameInline
+    ]
