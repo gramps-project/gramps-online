@@ -2,7 +2,9 @@
 A simple online version of Gramps
 
 ## Project vision
-This project aims to produce a platform for collaborating on a shared genealogy tree. It should allow many people to edit the tree and keep track of changes.
+This project aims to produce a platform for collaborating on a shared genealogy network/graph. It should allow many people to edit the tree and keep track of changes.
+
+The genealogy data should be made visible via intuitive and interactive graphical representations, to facilitate human understanding of our heritage.
 
 The data produced through this collaborative process should be publicly accessible, part of our commonwealth, while respecting privacy of living persons.
 
