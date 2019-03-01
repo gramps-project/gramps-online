@@ -29,8 +29,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
-from neomodel import config as neomodel_config
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -59,6 +57,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_neomodel',
+    'people',
 ]
 
 if os.environ.get('DJANGO_USE_DEBUG_TOOLBAR'):
@@ -111,7 +111,8 @@ DATABASES = {
     }
 }
 
-neomodel_config.DATABASE_URL = 'bolt://neo4j:neo4j@localhost:7687'
+NEOMODEL_NEO4J_BOLT_URL = os.environ.get(
+    'NEO4J_BOLT_URL', 'bolt://neo4j:gramps@localhost:7687')
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
