@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'people',
 ]
 
 if os.environ.get('DJANGO_USE_DEBUG_TOOLBAR'):
