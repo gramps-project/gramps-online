@@ -31,9 +31,11 @@ class Person(StructuredNode):
 
 
 class PersonName(StructuredNode):
+    uid = UniqueIdProperty()
     given_name = StringProperty(index=True)
     family_name = RelationshipTo("FamilyName", "FAMILY_NAME")
 
 
 class FamilyName(StructuredNode):
+    uid = UniqueIdProperty()
     title = StringProperty(index=True)
