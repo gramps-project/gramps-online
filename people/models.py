@@ -15,6 +15,25 @@
 #  You should have received a copy of the GNU Affero General Public License
 #  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from django.db import models
+#from django.db import models
+from neomodel import (StructuredNode, StringProperty,
+                      UniqueIdProperty, RelationshipTo, RelationshipFrom, DateTimeProperty)
 
-# Create your models here.
+
+class Person(StructuredNode):
+    uid = UniqueIdProperty()
+    names = RelationshipTo("PersonName", "NAME")
+
+    created = DateTimeProperty(default=datetime.utcnow)
+
+    class Meta:
+        app_label = "person"
+
+
+class PersonName(StructuredNode):
+    given_name = StringProperty(index=True)
+    family_name = RelationshipTo("FamilyName", "FAMILY_NAME")
+
+
+class FamilyName(StructuredNode):
+    title = StringProperty(index=True)
